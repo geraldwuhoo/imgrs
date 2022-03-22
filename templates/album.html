@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Album</title>
+        <link rel="stylesheet" type="text/css" href="/static/album.css">
+    </head>
+    <body>
+    {% if title.is_some() %}
+    <div class="responsive">
+        <h2>{{ title.as_ref().unwrap() }}</h2>
+        {% if description.is_some() %}
+        <h4>{{ description.as_ref().unwrap() }}</h4>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% for image in images %}
+    <div class="responsive">
+        <div class="gallery">
+        {% if image.title.is_some() %}
+        <div class="title">{{ image.title.as_ref().unwrap() }}</div>
+        {% endif %}
+        <a target="_blank" href="{{ image.link }}">
+            <img src="{{ image.link }}">
+        </a>
+        {% if image.description.is_some() %}
+        <div class="desc">{{ image.description.as_ref().unwrap() }}</div>
+        {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    </body>
+</html>
+

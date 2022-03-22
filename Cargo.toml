@@ -1,0 +1,34 @@
+[package]
+name = "imgrs"
+version = "0.1.0"
+edition = "2021"
+authors = ["Gerald Wu <gerald@geraldwu.com>"]
+license = "AGPL-3"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+log = "0.4"
+env_logger = "0.9"
+http = "0.2"
+url = "2"
+hyper = { version = "0.14", features = ["full"] }
+hyper-tls = "0.5"
+actix-web = "4"
+actix-web-static-files = "4"
+actix-session = { version = "0.6", features = ["redis-actor-session"] }
+actix-redis = "0.11"
+static-files = "0.2"
+askama = "0.11"
+thiserror = "1"
+serde = "1"
+serde_json = "1"
+
+[build-dependencies]
+static-files = "0.2"
+askama = "0.11"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
